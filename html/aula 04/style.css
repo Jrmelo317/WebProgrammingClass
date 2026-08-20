@@ -1,0 +1,53 @@
+.header-content {
+      background-color: #1547bb;
+      padding: 16px;
+}
+
+.add-movie-form {
+      background-color: red;
+      border-radius: 4px;
+      color: #fff;
+      margin-left: 10px;
+      border: 1px solid red;
+}
+
+.search-add-movie {
+      display: flex;
+      flex-direction: row;
+}
+
+.button {
+      padding: 4px 10px;
+      border-radius: 4px;
+      border: 1px;
+}
+
+.movie-list {
+      padding: 32px;
+      background-color: #ccc;
+}
+
+.body {
+      margin: 16px;
+      border-radius: 10px;
+}
+
+.button-container {
+      display: flex;
+      margin-bottom: 16px;
+      gap: 8px;
+      align-items: center;
+}
+
+.button-others {
+      padding: 6px 15px;
+      border-radius: 4px;
+      border: 1px solid #ccc; 
+}
+
+.movie-card {
+      background-color: #fff;
+      padding: 16px;
+      border-radius: 8px;
+      margin-bottom: 16px;
+}
