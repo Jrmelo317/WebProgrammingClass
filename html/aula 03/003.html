@@ -10,16 +10,12 @@
 </head>
 
 <body class="body">
-      <header>
-            <div class="header-content">
-                  <h1>CineTrack</h1>
-                  <div class="search-add-movie">
-                        <input type="text" placeholder="Buscar filme" class="button">
-                        <form action="../ aula 02/002.html" class="add-movie-form">
-                              <button type=" submit" class="add-movie-form">+ Adicionar</button>
-                        </form>
-                  </div>
-            </div>
+      <header class="header-content">
+            <h1 class="title">CineTrack</h1>
+            <input type="text" placeholder="Buscar filme" class="input-text-film">
+            <form action="../ aula 02/002.html" class="add-movie-form">
+                  <button type=" submit" class="add-movie-form">+ Adicionar</button>
+            </form>
       </header>
       <main class="movie-list">
             <div class="button-container">
@@ -28,42 +24,148 @@
                   <button class="button">Assistindo</button>
                   <button class="button">Quero Assistir</button>
             </div>
-            <section class="movie-card">
-                  <img src="https://media.themoviedb.org/t/p/w600_and_h900_face/9e3Dz7aCANy5aRUQF745IlNloJ1.jpg"
-                        alt="Cartaz do Filme A Origem" class="poster">
-                  <h2>A Origem</h2>
-                  <p>2010 - Ficção Científica</p>
-                  <p>Nota: &#9733; &#9733; &#9733; &#9733; &#9733;</p>
-                  <div class="button-container">
-                        <p>assistido</p>
-                        <button class="button-others">Editar</button>
-                        <button class="button-others">Excluir</button>
-                  </div>
-            </section>
-            <section class="movie-card">
-                  <img src="https://media.themoviedb.org/t/p/w600_and_h900_face/igw938inb6Fy0YVcwIyxQ7Lu5FO.jpg"
-                        alt="Cartaz do Filme Parasita" class="poster">
-                  <h2>Parasita</h2>
-                  <p>2019 - Suspense</p>
-                  <p>Nota: &#9733; &#9733; &#9733; &#9733; &#9734;</p>
-                  <div class="button-container">
-                        <p>assistido</p>
-                        <button class="button-others">Editar</button>
-                        <button class="button-others">Excluir</button>
-                  </div>
-            </section>
-            <section class="movie-card">
-                  <img src="https://media.themoviedb.org/t/p/w600_and_h900_face/imcOp1kJsCsAFCoOtY5OnPrFbAf.jpg"
-                        alt="Cartaz do Filme O Auto da Compadecida" class="poster">
-                  <h2>O Auto da Compadecida</h2>
-                  <p>2000 - Comédia</p>
-                  <p>Nota: &#9733; &#9733; &#9733; &#9733; &#9733;</p>
-                  <div class="button-container">
-                        <p>assistido</p>
-                        <button class="button-others">Editar</button>
-                        <button class="button-others">Excluir</button>
-                  </div>
-            </section>
+            <div class="movie-cards-containers">
+                  <section class="movie-card">
+                        <img src="https://media.themoviedb.org/t/p/w600_and_h900_face/9e3Dz7aCANy5aRUQF745IlNloJ1.jpg"
+                              alt="Cartaz do Filme A Origem" class="poster">
+                        <h2>A Origem</h2>
+                        <p>2010 - Ficção Científica</p>
+                        <p>Nota: &#9733; &#9733; &#9733; &#9733; &#9733;</p>
+                        <div class="info-container">
+                              <p class="status">assistido</p>
+                              <div class="button-container">
+                                    <button class="button-others">Editar</button>
+                                    <button class="button-others">Excluir</button>
+                              </div>
+                        </div>
+                  </section>
+                  <section class="movie-card">
+                        <img src="https://media.themoviedb.org/t/p/w600_and_h900_face/igw938inb6Fy0YVcwIyxQ7Lu5FO.jpg"
+                              alt="Cartaz do Filme Parasita" class="poster">
+                        <h2>Parasita</h2>
+                        <p>2019 - Suspense</p>
+                        <p>Nota: &#9733; &#9733; &#9733; &#9733; &#9734;</p>
+                        <div class="info-container">
+                              <p class="status">assistido</p>
+                              <div class="button-container">
+                                    <button class="button-others">Editar</button>
+                                    <button class="button-others">Excluir</button>
+                              </div>
+                        </div>
+                  </section>
+                  <section class="movie-card">
+                        <img src="https://media.themoviedb.org/t/p/w600_and_h900_face/imcOp1kJsCsAFCoOtY5OnPrFbAf.jpg"
+                              alt="Cartaz do Filme O Auto da Compadecida" class="poster">
+                        <h2>O Auto da Compadecida</h2>
+                        <p>2000 - Comédia</p>
+                        <p>Nota: &#9733; &#9733; &#9733; &#9733; &#9733;</p>
+                        <div class="info-container">
+                              <p class="status">assistido</p>
+                              <div class="button-container">
+                                    <button class="button-others">Editar</button>
+                                    <button class="button-others">Excluir</button>
+                              </div>
+                        </div>
+                  </section>
+                  <section class="movie-card">
+                        <img src="https://media.themoviedb.org/t/p/w600_and_h900_face/gEU2QniE6E77NI6lCU6MxlNBvIx.jpg"
+                              alt="Cartaz do Filme Interestelar" class="poster">
+                        <h2>Interestelar</h2>
+                        <p>2014 - Ficção Científica</p>
+                        <p>Nota: &#9733; &#9733; &#9733; &#9733; &#9733;</p>
+                        <div class="info-container">
+                              <p class="status">assistido</p>
+                              <div class="button-container">
+                                    <button class="button-others">Editar</button>
+                                    <button class="button-others">Excluir</button>
+                              </div>
+                        </div>
+                  </section>
+                  <section class="movie-card">
+                        <img src="https://media.themoviedb.org/t/p/w600_and_h900_face/f89U3ADr1oiB1s9GkdPOEpXUk5H.jpg"
+                              alt="Cartaz do Filme Matrix" class="poster">
+                        <h2>Matrix</h2>
+                        <p>1999 - Ficção Científica</p>
+                        <p>Nota: &#9733; &#9733; &#9733; &#9733; &#9734;</p>
+                        <div class="info-container">
+                              <p class="status">assistido</p>
+                              <div class="button-container">
+                                    <button class="button-others">Editar</button>
+                                    <button class="button-others">Excluir</button>
+                              </div>
+                        </div>
+                  </section>
+                  <section class="movie-card">
+                        <img src="https://media.themoviedb.org/t/p/w600_and_h900_face/qJ2tW6WMUDux911r6m7haRef0WH.jpg"
+                              alt="Cartaz do Filme Batman: O Cavaleiro das Trevas" class="poster">
+                        <h2 class="film-title">Batman: O Cavaleiro das Trevas</h2>
+                        <p>2008 - Ação</p>
+                        <p>Nota: &#9733; &#9733; &#9733; &#9733; &#9733;</p>
+                        <div class="info-container">
+                              <p class="status">assistido</p>
+                              <div class="button-container">
+                                    <button class="button-others">Editar</button>
+                                    <button class="button-others">Excluir</button>
+                              </div>
+                        </div>
+                  </section>
+                  <section class="movie-card">
+                        <img src="https://media.themoviedb.org/t/p/w600_and_h900_face/d5iIlFn5s0ImszYzBPb8JPIfbXD.jpg"
+                              alt="Cartaz do Filme Pulp Fiction" class="poster">
+                        <h2>Pulp Fiction</h2>
+                        <p>1994 - Crime</p>
+                        <p>Nota: &#9733; &#9733; &#9733; &#9733; &#9734;</p>
+                        <div class="info-container">
+                              <p class="status">assistido</p>
+                              <div class="button-container">
+                                    <button class="button-others">Editar</button>
+                                    <button class="button-others">Excluir</button>
+                              </div>
+                        </div>
+                  </section>
+                  <section class="movie-card">
+                        <img src="https://media.themoviedb.org/t/p/w600_and_h900_face/686F0CEPmI4ZXjFbWtIHQOBwnfI.jpg"
+                              alt="Cartaz do Filme Toy Story" class="poster">
+                        <h2>Toy Story</h2>
+                        <p>1995 - Animação</p>
+                        <p>Nota: &#9733; &#9733; &#9733; &#9733; &#9734;</p>
+                        <div class="info-container">
+                              <p class="status">assistido</p>
+                              <div class="button-container">
+                                    <button class="button-others">Editar</button>
+                                    <button class="button-others">Excluir</button>
+                              </div>
+                        </div>
+                  </section>
+                  <section class="movie-card">
+                        <img src="https://media.themoviedb.org/t/p/w600_and_h900_face/39wmItIWsg5sZMyRUHLkWBcuVCM.jpg"
+                              alt="Cartaz do Filme A Viagem de Chihiro" class="poster">
+                        <h2>A Viagem de Chihiro</h2>
+                        <p>2001 - Animação</p>
+                        <p>Nota: &#9733; &#9733; &#9733; &#9733; &#9733;</p>
+                        <div class="info-container">
+                              <p class="status">assistido</p>
+                              <div class="button-container">
+                                    <button class="button-others">Editar</button>
+                                    <button class="button-others">Excluir</button>
+                              </div>
+                        </div>
+                  </section>
+                  <section class="movie-card">
+                        <img src="https://media.themoviedb.org/t/p/w600_and_h900_face/udDclJoHjfjb8Ekgsd4FDteOkCU.jpg"
+                              alt="Cartaz do Filme Coringa" class="poster">
+                        <h2>Coringa</h2>
+                        <p>2019 - Drama</p>
+                        <p>Nota: &#9733; &#9733; &#9733; &#9733; &#9734;</p>
+                        <div class="info-container">
+                              <p class="status">assistido</p>
+                              <div class="button-container">
+                                    <button class="button-others">Editar</button>
+                                    <button class="button-others">Excluir</button>
+                              </div>
+                        </div>
+                  </section>
+            </div>
       </main>
       <footer></footer>
 </body>

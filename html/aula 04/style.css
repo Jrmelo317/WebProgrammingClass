@@ -1,6 +1,9 @@
 .header-content {
       background-color: #1547bb;
       padding: 16px;
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
 }
 
 .add-movie-form {
@@ -9,15 +12,24 @@
       color: #fff;
       margin-left: 10px;
       border: 1px solid red;
+      flex: 1;
+      padding: 4px 10px;
 }
 
-.search-add-movie {
-      display: flex;
-      flex-direction: row;
+.input-text-film {
+      padding: 4px 10px;
+      flex: 0 0 67%;
+      margin: 20px;
+}
+
+.title {
+      font-size: 48px;
+      flex: 1;
+      box-sizing: border-box;
 }
 
 .button {
-      padding: 4px 10px;
+      padding: 8px 16px;
       border-radius: 4px;
       border: 1px;
 }
@@ -27,9 +39,27 @@
       background-color: #ccc;
 }
 
+.status {
+      border-radius: 16px;
+      border: 1px solid #000;
+      padding: 4px 8px;
+}
+
+.movie-cards-containers {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+}
+
 .body {
       margin: 16px;
       border-radius: 10px;
+}
+
+.info-container {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
 }
 
 .button-container {
@@ -42,7 +72,7 @@
 .button-others {
       padding: 6px 15px;
       border-radius: 4px;
-      border: 1px solid #ccc; 
+      border: 1px solid #ccc;
 }
 
 .movie-card {
@@ -50,4 +80,11 @@
       padding: 16px;
       border-radius: 8px;
       margin-bottom: 16px;
+      width: 219px;
+}
+
+.film-title {
+      white-space: normal;
+      word-wrap: break-word;
+      overflow-wrap: break-word;
 }
