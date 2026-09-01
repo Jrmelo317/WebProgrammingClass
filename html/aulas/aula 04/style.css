@@ -28,10 +28,20 @@
       box-sizing: border-box;
 }
 
+
 .button {
+      width: fit-content;
+      white-space: nowrap;
       padding: 8px 16px;
       border-radius: 4px;
       border: 1px;
+}
+
+@media (max-width: 768px) {
+      .button {
+            padding: 4px 6px;
+            font-size: 10px;
+      }
 }
 
 .movie-list {
@@ -46,9 +56,34 @@
 }
 
 .movie-cards-containers {
-      display: flex;
-      flex-wrap: wrap;
+      display: grid;
+      grid-template-columns: repeat(4, minmax(200px, 1fr));
       gap: 16px;
+      justify-items: center;
+}
+
+@media (max-width: 1200px) {
+      .movie-cards-containers {
+            grid-template-columns: repeat(3, minmax(180px, 1fr));
+            gap: 16px;
+            justify-items: center;
+      }
+}
+
+@media (max-width: 1024px) {
+      .movie-cards-containers {
+            grid-template-columns: repeat(2, minmax(180px, 1fr));
+            gap: 16px;
+            justify-items: center;
+      }
+}
+
+@media (max-width: 768px) {
+      .movie-cards-containers {
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 16px;
+            justify-items: center;
+      }
 }
 
 .body {
