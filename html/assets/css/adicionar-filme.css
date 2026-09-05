@@ -1,0 +1,42 @@
+#form-filme {
+      max-width: 480px;
+      margin: 32px auto;
+      background-color: #fff;
+      padding: 24px;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      box-sizing: border-box;
+}
+
+.campo {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+}
+
+.campo label {
+      font-weight: bold;
+}
+
+#form-filme input,
+#form-filme select,
+#form-filme textarea {
+      width: 100%;
+      padding: 8px 12px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font: inherit;
+      box-sizing: border-box;
+}
+
+.acoes {
+      display: flex;
+      justify-content: flex-end;
+      gap: 8px;
+      margin-top: 16px;
+}
+
+.acoes button[type="submit"] {
+      background-color: #1547bb;
+      color: #fff;
+}
