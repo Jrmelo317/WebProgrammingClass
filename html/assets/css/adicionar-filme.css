@@ -1,5 +1,5 @@
 .modal {
-      visibility: visible;
+      visibility: hidden;
       position: fixed;
       overflow: hidden;
       inset: 0;

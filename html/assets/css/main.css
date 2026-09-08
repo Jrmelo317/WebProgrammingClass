@@ -1,10 +1,27 @@
+:root {
+      --primary-color: #1547bb;
+      --secondary-color: rgb(255, 0, 0);
+      --text-color: #fff;
+      --back-card-color: #fff;
+}
+
+@media (prefers-color-scheme: dark) {
+
+      :root {
+            --primary-color: #000;
+            --secondary-color: #ccc;
+            --text-color: #ffffff;
+            --back-card-color: #000;
+      }
+}
+
 .poster {
       height: 300px;
       width: 220px;
 }
 
 .header-content {
-      background-color: #1547bb;
+      background-color: var(--primary-color);
       padding: 16px;
       display: flex;
       align-items: center;
@@ -12,11 +29,11 @@
 }
 
 .add-movie-form {
-      background-color: red;
+      background-color: var(--secondary-color);
       border-radius: 4px;
-      color: #fff;
+      color: var(--text-color);
       margin-left: 10px;
-      border: 1px solid red;
+      border: 1px solid var(--secondary-color);
       flex: 1;
       padding: 4px 10px;
 }
@@ -28,6 +45,7 @@
 }
 
 .title {
+      color: var(--text-color);
       font-size: 48px;
       flex: 1;
       box-sizing: border-box;
@@ -115,7 +133,8 @@
 }
 
 .movie-card {
-      background-color: #fff;
+      color: var(--text-color);
+      background-color: var(--back-card-color);
       padding: 16px;
       border-radius: 8px;
       margin-bottom: 16px;
