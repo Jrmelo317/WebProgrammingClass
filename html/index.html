@@ -5,6 +5,7 @@
       <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <link rel="stylesheet" href="assets/css/main.css">
+      <link rel="stylesheet" href="assets/css/adicionar-filme.css">
       <title>CineTrack</title>
 </head>
 
@@ -12,7 +13,7 @@
       <header class="header-content">
             <h1 class="title">CineTrack</h1>
             <input type="text" placeholder="Buscar filme" class="input-text-film">
-            <form action="pages/adicionar-filme.html" class="add-movie-form">
+            <form  class="add-movie-form">
                   <button type=" submit" class="add-movie-form">+ Adicionar</button>
             </form>
       </header>
@@ -166,6 +167,54 @@
                   </section>
             </div>
       </main>
+      <div class="modal">
+            <form action="/test" method="post" id="form-filme">
+                  <h1>Adicionar Filme</h1>
+                  <div class="campo">
+                        <label for="titulo">Título</label>
+                        <input type="text" id="titulo" name="titulo" required>
+                  </div>
+                  <div class="campo">
+                        <label for="ano">Ano</label>
+                        <input type="number" id="ano" name="ano" required>
+                  </div>
+
+                  <div class="campo">
+                        <label for="genero">Gênero</label>
+                        <input type="text" id="genero" name="genero" required>
+                  </div>
+
+                  <div class="campo">
+                        <label for="poster">URL do Poster</label>
+                        <input type="url" id="poster" name="poster" required>
+                  </div>
+
+                  <div class="campo">
+                        <label for="status">Status</label>
+                        <select id="status" name="status">
+                              <option value="assistido">Assistido</option>
+                              <option value="assistindo">Assistindo</option>
+                              <option value="quero_assistir">Quero Assistir</option>
+                        </select>
+                  </div>
+
+                  <div class="campo">
+                        <label for="nota">Nota (1 a 5)</label>
+                        <input type="number" id="nota" name="nota" min="1" max="5" required>
+                  </div>
+
+                  <div class="campo">
+                        <label for="comentario">Comentário</label>
+                        <textarea id="comentario" name="comentario" rows="3"></textarea>
+                  </div>
+
+                  <div class="acoes">
+                        <button type="submit">Salvar</button>
+                        <button type="reset">Cancelar</button>
+                  </div>
+
+            </form>
+      </div>
       <footer>
             <a href="pages/sobre.html">Sobre o CineTrack</a>
       </footer>
