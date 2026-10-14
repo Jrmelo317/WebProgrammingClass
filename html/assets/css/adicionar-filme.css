@@ -11,6 +11,10 @@
       align-items: center;
 }
 
+.modal.aberto {
+      visibility: visible;
+}
+
 #form-filme {
       width: 100%;
       max-width: 480px;

@@ -14,7 +14,7 @@
             <h1 class="title">CineTrack</h1>
             <input type="text" placeholder="Buscar filme" class="input-text-film">
             <form  class="add-movie-form">
-                  <button type=" submit" class="add-movie-form">+ Adicionar</button>
+                  <button type="button" class="add-movie-form">+ Adicionar</button>
             </form>
       </header>
       <main class="movie-list">
@@ -25,10 +25,10 @@
                   <button class="button" data-status="assistindo">Assistindo</button>
                   <button class="button" data-status="quero_assistir">Quero Assistir</button>
             </div>
-            <div class="movie-cards-containers"/>
+            <div class="movie-cards-containers"></div>
       </main>
       <div class="modal">
-            <form action="/test" method="post" id="form-filme">
+            <form action="/test" method="post" id="form-filme" novalidate>
                   <h1>Adicionar Filme</h1>
                   <div class="campo">
                         <label for="titulo">Título</label>
@@ -68,9 +68,11 @@
                         <textarea id="comentario" name="comentario" rows="3"></textarea>
                   </div>
 
+                  <p id="erros-formulario" role="alert"></p>
+
                   <div class="acoes">
                         <button type="submit">Salvar</button>
-                        <button type="reset">Cancelar</button>
+                        <button type="button">Cancelar</button>
                   </div>
 
             </form>
