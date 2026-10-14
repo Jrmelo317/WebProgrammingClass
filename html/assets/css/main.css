@@ -59,6 +59,11 @@
       border: 1px;
 }
 
+.button.ativo {
+      background-color: var(--primary-color);
+      color: #fff;
+}
+
 @media (max-width: 768px) {
       .button {
             padding: 4px 6px;

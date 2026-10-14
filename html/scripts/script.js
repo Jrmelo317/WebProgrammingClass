@@ -100,26 +100,61 @@ const filmesInicias = [
     }
 ]
 
+let filmes = [...filmesInicias];
+
+let statusAtivo = 'todos';
+
 const renderizarCards = () => {
     const container = document.querySelector('.movie-cards-containers');
     container.innerHTML = '';
 
-    filmesInicias.forEach((filme) => {
+    const filmesVisiveis = statusAtivo === 'todos' ? filmes : filmes.filter((filme) => filme.status === statusAtivo);
+
+    filmesVisiveis.forEach((filme) => {
         const card = document.createElement('div');
         card.classList.add('movie-card');
 
         card.innerHTML = `
             <img src="${filme.poster}" alt="${filme.titulo}" class="poster">
-            <div class="info-container">
+            <article class="info-container">
                 <h2>${filme.titulo}</h2>
                 <p>Ano: ${filme.ano}</p>
                 <p>Gênero: ${filme.genero}</p>
                 <p class="nota">Nota: ${'★'.repeat(filme.nota)}${'☆'.repeat(5 - filme.nota)}</p>
                 <p class="status">${rotuloStatus(filme.status)}</p>
                 <p class="comentario">${filme.comentario}</p>
-            </div>
+                <div>
+                <button class="btn-editar" data-id="${filme.id}">Editar</button>
+                <button class="btn-remover" data-id="${filme.id}">Excluir</button>
+                </div>
+            </article>
         `;
 
         container.appendChild(card);
     });
 };
+
+const lista = document.querySelector('.movie-cards-containers');
+
+lista.addEventListener('click', (event) => {
+    const button = event.target.closest('.btn-remover');
+    if (!button) return;
+
+    const id = Number(button.dataset.id);
+    filmes = filmes.filter((filme) => filme.id !== id);
+    renderizarCards();
+});
+
+
+const nav = document.querySelector('.button-container');
+
+nav.addEventListener('click', (event) => {
+    const button = event.target.closest('[data-status]');
+    if (!button) return;
+
+    nav.querySelector('.ativo')?.classList.remove('ativo');
+    button.classList.add('ativo');
+
+    statusAtivo = button.dataset.status;
+    renderizarCards();
+});
