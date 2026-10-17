@@ -23,12 +23,12 @@
                   data-status="todos">Todos</button>
                   <button class="button" aria-pressed="false" data-status="assistido">Assistido</button>
                   <button class="button" aria-pressed="false" data-status="assistindo">Assistindo</button>
-                  <button class="button" aria-pressed="false" data-status="quero_assistir">Quero Assistir</button>
+                  <button class="button" aria-pressed="false" data-status="quero">Quero Assistir</button>
             </div>
             <div class="movie-cards-containers"></div>
       </main>
       <div class="modal" role="dialog" aria-modal="true" aria-labelledby="titulo-modal">
-            <form action="/test" method="post" id="form-filme" novalidate>
+            <form id="form-filme">
                   <h2 id="titulo-modal">Adicionar Filme</h2>
                   <div class="campo">
                         <label for="titulo">Título</label>
@@ -36,7 +36,7 @@
                   </div>
                   <div class="campo">
                         <label for="ano">Ano</label>
-                        <input type="number" id="ano" name="ano" required>
+                        <input type="number" id="ano" name="ano" min="1888" max="2100" required>
                   </div>
 
                   <div class="campo">
@@ -46,15 +46,15 @@
 
                   <div class="campo">
                         <label for="poster">URL do Poster</label>
-                        <input type="url" id="poster" name="poster" required>
+                        <input type="url" id="poster" name="poster">
                   </div>
 
                   <div class="campo">
                         <label for="status">Status</label>
-                        <select id="status" name="status">
+                        <select id="status" name="status" required>
                               <option value="assistido">Assistido</option>
                               <option value="assistindo">Assistindo</option>
-                              <option value="quero_assistir">Quero Assistir</option>
+                              <option value="quero">Quero Assistir</option>
                         </select>
                   </div>
 
@@ -82,7 +82,6 @@
       </footer>
 
       <script src="scripts/script.js"></script>
-      <script>atualizar();</script>
 </body>
 
 </html>

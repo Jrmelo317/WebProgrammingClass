@@ -1,5 +1,28 @@
 :root {
       color-scheme: light;
+      --fundo: #fafafa;
+      --texto: #171717;
+      --superficie: #fff;
+      --campo: #fff;
+      --borda: #e5e5e5;
+      --hover: #f5f5f5;
+      --botao: #171717;
+      --texto-botao: #fff;
+      --link: #0059b3;
+      --foco: #0070f3;
+      --comentario: #666;
+      --erro: #b91c1c;
+      --assistido: #166534;
+      --fundo-assistido: #dcfce7;
+      --assistindo: #0059b3;
+      --fundo-assistindo: #eff6ff;
+      --quero: #92400e;
+      --fundo-quero: #fef3c7;
+      --raio: 8px;
+      --raio-card: 12px;
+      --raio-poster: 6px;
+      --fundo-modal: rgba(0, 0, 0, 0.65);
+      --sombra-modal: 0 16px 48px rgba(0, 0, 0, 0.2);
 }
 
 * {
@@ -9,8 +32,8 @@
 .body {
       margin: 0;
       min-width: 280px;
-      background: #fafafa;
-      color: #171717;
+      background: var(--fundo);
+      color: var(--texto);
       font-family: Arial, Helvetica, sans-serif;
 }
 
@@ -26,7 +49,7 @@ button {
 }
 
 :focus-visible {
-      outline: 2px solid #0070f3;
+      outline: 2px solid var(--foco);
       outline-offset: 2px;
 }
 
@@ -36,8 +59,8 @@ button {
       flex-wrap: wrap;
       gap: 16px;
       padding: 24px clamp(16px, 4vw, 48px);
-      background: #fff;
-      border-bottom: 1px solid #e5e5e5;
+      background: var(--superficie);
+      border-bottom: 1px solid var(--borda);
 }
 
 .title {
@@ -51,10 +74,10 @@ button {
       max-width: 460px;
       min-width: 0;
       padding: 10px 12px;
-      color: #171717;
-      background: #fff;
-      border: 1px solid #e5e5e5;
-      border-radius: 8px;
+      color: var(--texto);
+      background: var(--campo);
+      border: 1px solid var(--borda);
+      border-radius: var(--raio);
 }
 
 .header-content > .add-movie-form {
@@ -63,10 +86,10 @@ button {
 
 .header-content .add-movie-form button {
       padding: 10px 16px;
-      color: #fff;
-      background: #171717;
-      border: 1px solid #171717;
-      border-radius: 8px;
+      color: var(--texto-botao);
+      background: var(--botao);
+      border: 1px solid var(--botao);
+      border-radius: var(--raio);
       white-space: nowrap;
 }
 
@@ -86,22 +109,22 @@ button {
 
 .button {
       padding: 8px 14px;
-      color: #171717;
-      background: #fff;
-      border: 1px solid #e5e5e5;
-      border-radius: 8px;
+      color: var(--texto);
+      background: var(--superficie);
+      border: 1px solid var(--borda);
+      border-radius: var(--raio);
 }
 
 .button:hover,
 .btn-editar:hover,
 .btn-remover:hover {
-      background: #f5f5f5;
+      background: var(--hover);
 }
 
 .button.ativo {
-      color: #fff;
-      background: #171717;
-      border-color: #171717;
+      color: var(--texto-botao);
+      background: var(--botao);
+      border-color: var(--botao);
 }
 
 .movie-cards-containers {
@@ -116,9 +139,9 @@ button {
       gap: 16px;
       min-width: 0;
       padding: 16px;
-      background: #fff;
-      border: 1px solid #e5e5e5;
-      border-radius: 12px;
+      background: var(--superficie);
+      border: 1px solid var(--borda);
+      border-radius: var(--raio-card);
 }
 
 .poster {
@@ -127,8 +150,8 @@ button {
       height: 280px;
       object-fit: cover;
       object-position: center top;
-      background: #f5f5f5;
-      border-radius: 6px;
+      background: var(--hover);
+      border-radius: var(--raio-poster);
 }
 
 .info-container {
@@ -153,13 +176,26 @@ button {
 
 .status {
       padding: 4px 8px;
-      color: #0059b3;
-      background: #eff6ff;
       border-radius: 999px;
 }
 
+.status-assistido {
+      color: var(--assistido);
+      background: var(--fundo-assistido);
+}
+
+.status-assistindo {
+      color: var(--assistindo);
+      background: var(--fundo-assistindo);
+}
+
+.status-quero {
+      color: var(--quero);
+      background: var(--fundo-quero);
+}
+
 .comentario {
-      color: #666;
+      color: var(--comentario);
       overflow-wrap: anywhere;
       display: -webkit-box;
       -webkit-box-orient: vertical;
@@ -179,19 +215,19 @@ button {
 .btn-editar,
 .btn-remover {
       padding: 6px 10px;
-      color: #171717;
-      background: #fff;
-      border: 1px solid #e5e5e5;
-      border-radius: 8px;
+      color: var(--texto);
+      background: var(--superficie);
+      border: 1px solid var(--borda);
+      border-radius: var(--raio);
 }
 
 footer {
       padding: 24px clamp(16px, 4vw, 48px);
-      border-top: 1px solid #e5e5e5;
+      border-top: 1px solid var(--borda);
 }
 
 footer a {
-      color: #0059b3;
+      color: var(--link);
 }
 
 @media (max-width: 600px) {
@@ -214,73 +250,23 @@ footer a {
 @media (prefers-color-scheme: dark) {
       :root {
             color-scheme: dark;
-      }
-
-      .body {
-            background: #0a0a0a;
-            color: #ededed;
-      }
-
-      :focus-visible {
-            outline-color: #3291ff;
-      }
-
-      .header-content,
-      .movie-card {
-            background: #111;
-            border-color: #303030;
-      }
-
-      .input-text-film {
-            color: #ededed;
-            background: #171717;
-            border-color: #303030;
-      }
-
-      .header-content .add-movie-form button {
-            color: #111;
-            background: #ededed;
-            border-color: #ededed;
-      }
-
-      .button,
-      .btn-editar,
-      .btn-remover {
-            color: #ededed;
-            background: #111;
-            border-color: #303030;
-      }
-
-      .button:hover,
-      .btn-editar:hover,
-      .btn-remover:hover {
-            background: #1f1f1f;
-      }
-
-      .button.ativo {
-            color: #111;
-            background: #ededed;
-            border-color: #ededed;
-      }
-
-      .poster {
-            background: #1f1f1f;
-      }
-
-      .status {
-            color: #88bdff;
-            background: #10233d;
-      }
-
-      .comentario {
-            color: #a1a1a1;
-      }
-
-      footer {
-            border-color: #303030;
-      }
-
-      footer a {
-            color: #3291ff;
+            --fundo: #0a0a0a;
+            --texto: #ededed;
+            --superficie: #111;
+            --campo: #171717;
+            --borda: #303030;
+            --hover: #1f1f1f;
+            --botao: #ededed;
+            --texto-botao: #111;
+            --link: #3291ff;
+            --foco: #3291ff;
+            --comentario: #a1a1a1;
+            --erro: #ff6b6b;
+            --assistido: #86efac;
+            --fundo-assistido: #052e16;
+            --assistindo: #88bdff;
+            --fundo-assistindo: #10233d;
+            --quero: #fcd34d;
+            --fundo-quero: #422006;
       }
 }

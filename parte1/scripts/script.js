@@ -4,49 +4,23 @@ const rotuloStatus = (status) => {
             return 'Assistido';
         case 'assistindo':
             return 'Assistindo';
-        case 'quero_assistir':
+        case 'quero':
             return 'Quero Assistir';
         default:
             return 'Desconhecido';
     }
 };
 
-function estrelas(quantidade) {
-    let nota = 'Nota: ';
-
-    for (let i = 1; i <= 5; i++) {
-        if (i <= quantidade) {
-            nota += '★';
-        } else {
-            nota += '☆';
-        }
-    }
-
-    const notas = document.querySelectorAll('.nota');
-
-    notas.forEach(function (elemento) {
-        elemento.textContent = nota;
-    });
-
-    console.log(quantidade);
-}
-
-const alvosStatus = document.querySelectorAll('.info-container .status');
-
-alvosStatus.forEach((alvo) => {
-    alvo.textContent = rotuloStatus('assistido');
-});
-
-const filmesInicias = [
+const filmesIniciais = [
     {
         id: 1,
         titulo: 'A Origem',
         ano: 2010,
-        genero: 'Ficção Científica',
+        genero: 'Ficção científica',
         poster: 'https://media.themoviedb.org/t/p/w600_and_h900_face/9e3Dz7aCANy5aRUQF745IlNloJ1.jpg',
-        nota: 4,
+        nota: 5,
         status: 'assistido',
-        comentario: 'Um filme incrível que desafia a mente e a realidade. A trama é complexa, mas recompensadora, com efeitos visuais impressionantes e uma atuação brilhante de Leonardo DiCaprio.',
+        comentario: 'Revejo sempre.',
     },
     {
         id: 2,
@@ -54,49 +28,49 @@ const filmesInicias = [
         ano: 2019,
         genero: 'Suspense',
         poster: 'https://media.themoviedb.org/t/p/w600_and_h900_face/igw938inb6Fy0YVcwIyxQ7Lu5FO.jpg',
-        nota: 5,
+        nota: 4,
         status: 'assistido',
-        comentario: 'Um filme que explora a desigualdade social de maneira poderosa e impactante. A narrativa é envolvente e os personagens são bem desenvolvidos.',
+        comentario: '',
     },
     {
         id: 3,
-        titulo: 'O Grande Hotel Budapeste',
-        ano: 2014,
+        titulo: 'O Auto da Compadecida',
+        ano: 2000,
         genero: 'Comédia',
-        poster: 'https://media.themoviedb.org/t/p/w600_and_h900_face/yabOguSrb8ffUXCkI6t8Rw7xtSh.jpg',
-        nota: 3,
-        status: 'assistindo',
-        comentario: 'Um filme visualmente deslumbrante com uma narrativa única e personagens excêntricos. A direção de Wes Anderson é impecável, criando um mundo encantador e cativante.',
+        poster: 'https://image.tmdb.org/t/p/w500/xWCKF7hgOicb3A0XiY13SdlwRcn.jpg',
+        nota: 5,
+        status: 'assistido',
+        comentario: 'Classico nacional.',
     },
     {
         id: 4,
-        titulo: 'A Rede Social',
-        ano: 2010,
-        genero: 'Drama',
-        poster: 'https://media.themoviedb.org/t/p/w600_and_h900_face/n0ybibhJtQ5icDqTp8eRytcIHJx.jpg',
+        titulo: 'Duna: Parte Dois',
+        ano: 2024,
+        genero: 'Ficção científica',
+        poster: 'https://image.tmdb.org/t/p/w500/zjuI52fmUS1YGMQm53UYTTgOg0K.jpg',
         nota: 4,
-        status: 'quero_assistir',
-        comentario: 'Um filme que retrata a ascensão do Facebook e os desafios enfrentados por seus fundadores. A narrativa é envolvente e a atuação de Jesse Eisenberg é notável.',
+        status: 'assistindo',
+        comentario: '',
     },
     {
         id: 5,
-        titulo: 'Mad Max: Estrada da Fúria',
-        ano: 2015,
-        genero: 'Ação',
-        poster: 'https://media.themoviedb.org/t/p/w600_and_h900_face/hA2ple9q4qnwxp3hKVNhroipsir.jpg',
+        titulo: 'Interestelar',
+        ano: 2014,
+        genero: 'Ficção científica',
+        poster: 'https://image.tmdb.org/t/p/w500/gEU2QniE6E77NI6lCU6MxlNBvIx.jpg',
         nota: 5,
-        status: 'assistido',
-        comentario: 'Um filme de ação eletrizante com cenas de perseguição impressionantes e uma narrativa intensa. A atuação de Charlize Theron é excepcional, tornando o filme ainda mais memorável.',
+        status: 'quero',
+        comentario: '',
     },
     {
         id: 6,
-        titulo: 'La La Land: Cantando Estações',
-        ano: 2016,
-        genero: 'Musical',
-        poster: 'https://media.themoviedb.org/t/p/w600_and_h900_face/uDO8zWDhfWwoFdKS4fzkUJt0Rf0.jpg',
+        titulo: 'Cidade de Deus',
+        ano: 2002,
+        genero: 'Drama',
+        poster: 'https://image.tmdb.org/t/p/w500/gfnXixcGC060QcG6JPxN6AMdVsq.jpg',
         nota: 4,
-        status: 'assistindo',
-        comentario: 'Um filme musical encantador que celebra a paixão pela música e pelo amor. A química entre Ryan Gosling e Emma Stone é palpável, e as músicas são cativantes e memoráveis.',
+        status: 'quero',
+        comentario: '',
     }
 ]
 
@@ -106,12 +80,14 @@ function carregar() {
     try {
         const salvo = localStorage.getItem(CHAVE_FILMES);
 
-        if (salvo === null) return [...filmesInicias];
+        if (salvo === null) return [...filmesIniciais];
 
         const dados = JSON.parse(salvo);
-        return Array.isArray(dados) ? dados : [...filmesInicias];
+        return Array.isArray(dados)
+            ? dados.map((filme) => ({ ...filme, status: filme.status === 'quero_assistir' ? 'quero' : filme.status }))
+            : [...filmesIniciais];
     } catch {
-        return [...filmesInicias];
+        return [...filmesIniciais];
     }
 }
 
@@ -129,8 +105,12 @@ function criarCard(filme) {
 
     const imagem = document.createElement('img');
     imagem.className = 'poster';
-    imagem.src = filme.poster;
-    imagem.alt = `Pôster de ${filme.titulo}`;
+    imagem.src = filme.poster || 'assets/img/sem-poster.svg';
+    imagem.alt = filme.poster ? `Pôster de ${filme.titulo}` : `Pôster não informado para ${filme.titulo}`;
+    imagem.onerror = () => {
+        imagem.onerror = null;
+        imagem.src = 'assets/img/sem-poster.svg';
+    };
 
     const info = document.createElement('article');
     info.className = 'info-container';
@@ -165,7 +145,7 @@ function criarCard(filme) {
         paragrafo(`Ano: ${filme.ano}`),
         paragrafo(`Gênero: ${filme.genero}`),
         paragrafo(`Nota: ${'★'.repeat(filme.nota)}${'☆'.repeat(5 - filme.nota)}`, 'nota'),
-        paragrafo(rotuloStatus(filme.status), 'status'),
+        paragrafo(rotuloStatus(filme.status), `status status-${filme.status}`),
         paragrafo(filme.comentario, 'comentario'),
         acoes
     );
@@ -227,6 +207,9 @@ lista.addEventListener('click', (event) => {
     if (!botaoRemover) return;
 
     const id = Number(botaoRemover.dataset.id);
+    const filme = filmes.find((item) => item.id === id);
+    if (!filme || !window.confirm(`Excluir ${filme.titulo}?`)) return;
+
     filmes = filmes.filter((filme) => filme.id !== id);
     salvar();
     atualizar();
@@ -286,16 +269,20 @@ function validarFilme(filme) {
 
     if (!filme.titulo.trim()) erros.push('Informe o Titulo');
     if (!filme.genero.trim()) erros.push('Informe o Genero');
-    if (!Number.isInteger(filme.ano) || filme.ano <= 0) erros.push('Informe um Ano válido');
+    if (!Number.isInteger(filme.ano) || filme.ano < 1888 || filme.ano > 2100) erros.push('Informe um Ano entre 1888 e 2100');
     if (!Number.isInteger(filme.nota) || filme.nota < 1 || filme.nota > 5) erros.push('Informe uma Nota válida (1 a 5)');
 
-    try {
-        const url = new URL(filme.poster);
-        if (url.protocol !== 'http:' && url.protocol !== 'https:') {
+    if (!['assistido', 'assistindo', 'quero'].includes(filme.status)) erros.push('Selecione um Status válido');
+
+    if (filme.poster.trim()) {
+        try {
+            const url = new URL(filme.poster);
+            if (url.protocol !== 'http:' && url.protocol !== 'https:') {
+                erros.push('Informe uma URL válida para o Poster');
+            }
+        } catch {
             erros.push('Informe uma URL válida para o Poster');
         }
-    } catch {
-        erros.push('Informe uma URL válida para o Poster');
     }
 
     return erros;
@@ -304,6 +291,13 @@ function validarFilme(filme) {
 function gerarId() {
     return Math.max(0, ...filmes.map((filme) => filme.id)) + 1;
 }
+
+formulario.addEventListener('invalid', () => {
+    const invalidos = [...formulario.elements].filter((campo) => campo.validity && !campo.validity.valid);
+    document.querySelector('#erros-formulario').textContent = invalidos
+        .map((campo) => `${campo.labels?.[0]?.textContent}: ${campo.validationMessage}`)
+        .join(' ');
+}, true);
 
 formulario.addEventListener('submit', (event) => {
     event.preventDefault();
@@ -345,3 +339,5 @@ function aoDigitar() {
 }
 
 busca.addEventListener('input', debounce(aoDigitar, 300));
+
+atualizar();

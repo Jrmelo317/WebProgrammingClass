@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 300" role="img" aria-label="Sem pôster">
+  <rect width="200" height="300" fill="#e5e5e5"/>
+  <rect x="30" y="75" width="140" height="150" rx="8" fill="#fafafa" stroke="#999"/>
+  <circle cx="77" cy="122" r="15" fill="#bbb"/>
+  <path d="M45 195 88 145l28 30 20-20 20 40Z" fill="#bbb"/>
+  <text x="100" y="255" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" fill="#444">Sem pôster</text>
+</svg>
