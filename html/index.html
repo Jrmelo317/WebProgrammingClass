@@ -12,24 +12,24 @@
 <body class="body">
       <header class="header-content">
             <h1 class="title">CineTrack</h1>
-            <input type="text" placeholder="Buscar filme" class="input-text-film">
+            <input type="search" placeholder="Buscar filme" aria-label="Buscar filme" class="input-text-film">
             <form  class="add-movie-form">
                   <button type="button" class="add-movie-form">+ Adicionar</button>
             </form>
       </header>
       <main class="movie-list">
             <div class="button-container">
-                  <button class="button ativo"
+                  <button class="button ativo" aria-pressed="true"
                   data-status="todos">Todos</button>
-                  <button class="button" data-status="assistido">Assistido</button>
-                  <button class="button" data-status="assistindo">Assistindo</button>
-                  <button class="button" data-status="quero_assistir">Quero Assistir</button>
+                  <button class="button" aria-pressed="false" data-status="assistido">Assistido</button>
+                  <button class="button" aria-pressed="false" data-status="assistindo">Assistindo</button>
+                  <button class="button" aria-pressed="false" data-status="quero_assistir">Quero Assistir</button>
             </div>
             <div class="movie-cards-containers"></div>
       </main>
-      <div class="modal">
+      <div class="modal" role="dialog" aria-modal="true" aria-labelledby="titulo-modal">
             <form action="/test" method="post" id="form-filme" novalidate>
-                  <h1>Adicionar Filme</h1>
+                  <h2 id="titulo-modal">Adicionar Filme</h2>
                   <div class="campo">
                         <label for="titulo">Título</label>
                         <input type="text" id="titulo" name="titulo" required>
@@ -81,8 +81,8 @@
             <a href="pages/sobre.html">Sobre o CineTrack</a>
       </footer>
 
-      <script src="../html/scripts/script.js"></script>
-      <script>renderizarCards();</script>
+      <script src="scripts/script.js"></script>
+      <script>atualizar();</script>
 </body>
 
 </html>

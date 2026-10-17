@@ -100,7 +100,26 @@ const filmesInicias = [
     }
 ]
 
-let filmes = [...filmesInicias];
+const CHAVE_FILMES = 'cinetrack:filmes';
+
+function carregar() {
+    try {
+        const salvo = localStorage.getItem(CHAVE_FILMES);
+
+        if (salvo === null) return [...filmesInicias];
+
+        const dados = JSON.parse(salvo);
+        return Array.isArray(dados) ? dados : [...filmesInicias];
+    } catch {
+        return [...filmesInicias];
+    }
+}
+
+let filmes = carregar();
+
+function salvar() {
+    localStorage.setItem(CHAVE_FILMES, JSON.stringify(filmes));
+}
 
 let statusAtivo = 'todos';
 
@@ -111,7 +130,7 @@ function criarCard(filme) {
     const imagem = document.createElement('img');
     imagem.className = 'poster';
     imagem.src = filme.poster;
-    imagem.alt = filme.titulo;
+    imagem.alt = `Pôster de ${filme.titulo}`;
 
     const info = document.createElement('article');
     info.className = 'info-container';
@@ -132,11 +151,13 @@ function criarCard(filme) {
     editar.className = 'btn-editar';
     editar.dataset.id = filme.id;
     editar.textContent = 'Editar';
+    editar.setAttribute('aria-label', `Editar ${filme.titulo}`);
 
     const remover = document.createElement('button');
     remover.className = 'btn-remover';
     remover.dataset.id = filme.id;
     remover.textContent = 'Excluir';
+    remover.setAttribute('aria-label', `Excluir ${filme.titulo}`);
 
     acoes.append(editar, remover);
     info.append(
@@ -153,13 +174,20 @@ function criarCard(filme) {
     return card;
 }
 
-const renderizarCards = () => {
+const busca = document.querySelector('.input-text-film');
+
+function aplicarFiltros() {
+    const termo = busca.value.trim().toLowerCase();
+
+    return filmes.filter((filme) =>
+    (statusAtivo === 'todos' || filme.status === statusAtivo) &&
+    (filme.titulo.toLowerCase().includes(termo))
+    );
+}
+
+const renderizarCards = (filmesVisiveis) => {
     const container = document.querySelector('.movie-cards-containers');
     const fragmento = document.createDocumentFragment();
-
-    const filmesVisiveis = statusAtivo === 'todos'
-        ? filmes
-        : filmes.filter((filme) => filme.status === statusAtivo);
 
     filmesVisiveis.forEach((filme) => {
         fragmento.appendChild(criarCard(filme));
@@ -167,6 +195,10 @@ const renderizarCards = () => {
 
     container.replaceChildren(fragmento);
 };
+
+function atualizar() {
+    renderizarCards(aplicarFiltros());
+}
 
 const lista = document.querySelector('.movie-cards-containers');
 
@@ -179,6 +211,7 @@ lista.addEventListener('click', (event) => {
         if (!filme) return;
 
         abrir();
+        document.querySelector('#titulo-modal').textContent = 'Editar Filme';
         formulario.elements.titulo.value = filme.titulo;
         formulario.elements.ano.value = filme.ano;
         formulario.elements.genero.value = filme.genero;
@@ -195,7 +228,8 @@ lista.addEventListener('click', (event) => {
 
     const id = Number(botaoRemover.dataset.id);
     filmes = filmes.filter((filme) => filme.id !== id);
-    renderizarCards();
+    salvar();
+    atualizar();
 })
 
 
@@ -205,27 +239,38 @@ nav.addEventListener('click', (event) => {
     const button = event.target.closest('[data-status]');
     if (!button) return;
 
-    nav.querySelector('.ativo')?.classList.remove('ativo');
+    const anterior = nav.querySelector('.ativo');
+    anterior?.classList.remove('ativo');
+    anterior?.setAttribute('aria-pressed', 'false');
     button.classList.add('ativo');
+    button.setAttribute('aria-pressed', 'true');
 
     statusAtivo = button.dataset.status;
-    renderizarCards();
+    atualizar();
 });
 
 const modal = document.querySelector('.modal');
 const formulario = document.querySelector('#form-filme');
 
 let editandoId = null;
+let focoAnterior;
 
 function abrir() {
+    focoAnterior = document.activeElement;
     formulario.reset();
+    document.querySelector('#titulo-modal').textContent = 'Adicionar Filme';
     document.querySelector('#erros-formulario').textContent = '';
     editandoId = null;
     modal.classList.add('aberto');
+    document.querySelectorAll('header, main, footer').forEach((elemento) => elemento.inert = true);
+    formulario.elements.titulo.focus();
 }
 
 function fechar() {
+    if (!modal.classList.contains('aberto')) return;
     modal.classList.remove('aberto');
+    document.querySelectorAll('header, main, footer').forEach((elemento) => elemento.inert = false);
+    if (focoAnterior?.isConnected) focoAnterior.focus();
 }
 
 document.querySelector('.header-content .add-movie-form button').addEventListener('click', abrir);
@@ -280,6 +325,23 @@ formulario.addEventListener('submit', (event) => {
         );
     }
 
-    renderizarCards();
+    salvar();
+    atualizar();
     fechar();
 });
+
+
+function debounce(funcao, espera) {
+    let temporizador;
+
+    return (...args) => {
+        clearTimeout(temporizador);
+        temporizador = setTimeout(() => funcao(...args), espera);
+    };
+}
+
+function aoDigitar() {
+    atualizar();
+}
+
+busca.addEventListener('input', debounce(aoDigitar, 300));
