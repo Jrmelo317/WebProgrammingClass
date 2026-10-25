@@ -98,6 +98,7 @@ function salvar() {
 }
 
 let statusAtivo = 'todos';
+let ordenacaoAtual = 'titulo';
 
 function criarCard(filme) {
     const card = document.createElement('div');
@@ -177,8 +178,19 @@ const renderizarCards = (filmesVisiveis) => {
 };
 
 function atualizar() {
-    renderizarCards(aplicarFiltros());
+    const visiveis = aplicarFiltros();
+    visiveis.sort((a, b) => {
+        if (ordenacaoAtual === 'ano') return a.ano - b.ano;
+        if (ordenacaoAtual === 'nota') return b.nota - a.nota;
+        return a.titulo.localeCompare(b.titulo, 'pt-BR');
+    });
+    renderizarCards(visiveis);
 }
+
+document.querySelector('#ordenar').addEventListener('change', (event) => {
+    ordenacaoAtual = event.target.value;
+    atualizar();
+});
 
 const lista = document.querySelector('.movie-cards-containers');
 
