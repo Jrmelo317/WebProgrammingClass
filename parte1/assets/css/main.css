@@ -270,3 +270,37 @@ footer a {
             --fundo-quero: #422006;
       }
 }
+
+
+@media print {
+      :root {
+            color-scheme: light;
+            --fundo: #fff;
+            --texto: #000;
+            --superficie: #fff;
+            --hover: #fff;
+            --borda: #000;
+            --comentario: #000;
+            --assistido: #000;
+            --fundo-assistido: #fff;
+            --assistindo: #000;
+            --fundo-assistindo: #fff;
+            --quero: #000;
+            --fundo-quero: #fff;
+      }
+
+      .input-text-film,
+      .header-content > .add-movie-form,
+      .button-container,
+      .btn-editar,
+      .btn-remover,
+      .body > .modal,
+      footer {
+            display: none;
+      }
+
+      .movie-card {
+            box-shadow: none;
+            break-inside: avoid;
+      }
+}
