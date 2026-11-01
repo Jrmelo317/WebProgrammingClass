@@ -7,11 +7,15 @@
     <link rel="stylesheet" href="src/index.css" />
     <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
     <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
-    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="https://unpkg.com/@babel/standalone@7/babel.min.js"></script>
   </head>
-  <body>
+  <body class="body">
     <div id="root"></div>
-    <script type="text/babel" src="src/components/Titulo.jsx"></script>
+    <script src="src/data/filmes.js"></script>
+    <script type="text/babel" src="src/components/Header.jsx"></script>
+    <script type="text/babel" src="src/components/Filtros.jsx"></script>
+    <script type="text/babel" src="src/components/CardFilme.jsx"></script>
+    <script type="text/babel" src="src/components/ListaFilmes.jsx"></script>
     <script type="text/babel" src="src/App.jsx"></script>
     <script type="text/babel" src="src/main.jsx"></script>
   </body>
