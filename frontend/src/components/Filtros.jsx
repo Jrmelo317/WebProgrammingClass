@@ -1,10 +1,24 @@
-function Filtros() {
+const STATUS = [
+  { valor: "todos", rotulo: "Todos" },
+  { valor: "assistido", rotulo: "Assistido" },
+  { valor: "assistindo", rotulo: "Assistindo" },
+  { valor: "quero", rotulo: "Quero assistir" },
+];
+
+function Filtros({ ativo, aoMudar }) {
   return (
     <nav className="button-container" aria-label="Filtrar filmes por status">
-      <button type="button" className="button ativo" aria-pressed="true">Todos</button>
-      <button type="button" className="button" aria-pressed="false">Assistido</button>
-      <button type="button" className="button" aria-pressed="false">Assistindo</button>
-      <button type="button" className="button" aria-pressed="false">Quero assistir</button>
+      {STATUS.map((s) => (
+        <button
+          key={s.valor}
+          type="button"
+          className={ativo === s.valor ? "button ativo" : "button"}
+          aria-pressed={ativo === s.valor}
+          onClick={() => aoMudar(s.valor)}
+        >
+          {s.rotulo}
+        </button>
+      ))}
     </nav>
   );
 }
