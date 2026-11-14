@@ -1,4 +1,4 @@
-function ListaFilmes({ filmes }) {
+function ListaFilmes({ filmes, aoEditar, aoRemover }) {
   if (filmes.length === 0) {
     return <p role="status">Nenhum filme encontrado.</p>;
   }
@@ -6,7 +6,12 @@ function ListaFilmes({ filmes }) {
   return (
     <section id="lista" className="movie-cards-containers" aria-label="Lista de filmes" aria-live="polite">
       {filmes.map((filme) => (
-        <CardFilme key={filme.id} filme={filme} />
+        <CardFilme
+          key={filme.id}
+          filme={filme}
+          aoEditar={aoEditar}
+          aoRemover={aoRemover}
+        />
       ))}
     </section>
   );

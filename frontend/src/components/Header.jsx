@@ -1,4 +1,4 @@
-function Header({ busca, aoBuscar }) {
+function Header({ busca, aoBuscar, aoAdicionar }) {
   return (
     <header className="header-content">
       <h1 className="title">CineTrack</h1>
@@ -11,7 +11,7 @@ function Header({ busca, aoBuscar }) {
         onChange={(e) => aoBuscar(e.target.value)}
       />
       <div className="add-movie-form">
-        <button type="button">+ Adicionar</button>
+        <button type="button" onClick={aoAdicionar}>+ Adicionar</button>
       </div>
     </header>
   );

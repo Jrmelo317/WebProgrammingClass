@@ -60,3 +60,7 @@ const filmesIniciais = [
         comentario: '',
     }
 ];
+
+function gerarId(filmes) {
+    return filmes.length === 0 ? 1 : Math.max(...filmes.map((filme) => filme.id)) + 1;
+}
